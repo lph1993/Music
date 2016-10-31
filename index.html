@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IF YOU</title>
+	<link type="image/x-icon" href="images/title.jpg" rel="shortcut icon"></link>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+	<link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./swiper-3.3.1.min.css">
+	<style>
+	*{margin:0;padding:0;}
+	.index{
+		color:maroon;
+		border-left:4px solid maroon;
+		padding-left:8px;
+		font-weight:bold;
+		background:rgba(0,0,0,0.2);
+	}
+	ol li{cursor:pointer;user-select: none;}
+	ol li:hover{background:rgba(0,0,0,0.1);}
+	html,body{
+		margin:0;
+		height:100%;
+		background:url(images/htmlbg.jpg) repeat;
+		background-size:auto;
+		display:-webkit-box;
+		-webkit-box-orient:vertical;
+		overflow:hidden;
+		font-size:0.625rem;
+	}
+	body{
+		font:12px/2em "微软雅黑";
+		background:url(images/audioBG.jpg) no-repeat center center;
+	}
+	header{
+		width:100%;
+		height:0px;
+		-webkit-box-flex:1;
+		-webkit-box-flex-group:2;
+	}
+	#Audio{
+		width:100%;
+		height:80%;
+		-webkit-box-flex:1;
+		-webkit-box-flex-group:1;
+		display:-webkit-box;
+		-webkit-box-orient:vertical;
+	}
+	#musicList{
+		width:100%;
+		font-size:14px;
+	}
+	#controls{
+		width:100%;
+		max-width:1200px;
+		height:50px;
+		padding-top:10px;
+		-webkit-box-flex:1;
+		-webkit-box-flex-group:2;
+		position:relative;
+		line-height:50px;
+		margin:0 auto;
+		text-align:center;
+	}
+	#controls output{
+		position:absolute;
+		top:12px;
+		left:50%;
+		line-height:1em;
+		margin-left:45px;
+	}
+	#play,#prev,#next{
+		font-size:24px;
+		color:rgba(0,0,0,0.6);
+		padding:0 10px;
+	}
+	#type,#muted{
+		font-size:18px;
+		color:#333;
+		padding:0 5px
+	}
+	#play:hover,#prev:hover,#next:hover,#type:hover,#muted:hover{color:rgba(60, 114, 230, .8);}
+	ol li{
+		line-height:2em;
+		padding:0 14px;
+		color:#333;
+		list-style:none;
+		max-width: 600px;
+	}
+	#muted{
+		font-size:16px;
+		color:#666;
+	}
+	i{
+		padding:0 5px;
+	}
+	#current,#volume{ 
+		width: 100%; 
+		height: 5px; 
+		background: rgba(60, 114, 230, .8); 
+		-webkit-appearance: none !important; 
+		position:absolute;
+		top:0;
+		left:0;
+		outline:0;
+		} 
+	#current::-webkit-slider-thumb,#volume::-webkit-slider-thumb{ 
+		width: 5px; 
+		height: 5px; 
+		background: -webkit-gradient( 
+		linear, 
+		left top, 
+		left bottom, 
+		from(#fff), 
+		to(#ccc) 
+		);  
+		-webkit-box-shadow: 0 0 6px #000; 
+		-webkit-border-radius: 14px; 
+		-webkit-appearance: none !important; 
+	} 
+	#volume{
+		width:100px;
+		position:relative;
+		margin-left:10px;
+	}
+	ul{
+		position:relative;
+		transition:all 0.5s 0s;
+		list-style:none;
+	}
+	ul li{
+		width:100%;
+		transition:all 0.5s 0s;
+		font-size:14px;
+		line-height:3rem}
+	#lrcWrap{
+		height:100%;
+		text-align:center;
+		overflow:hidden;}
+	#swiper{
+		height:100%;
+		width:100%;
+		max-width:602px;
+		-webkit-box-flex:1;
+		-webkit-box-flex-group:1;
+		margin:0 auto;
+		padding:20px 0;
+		box-sizing:border-box;
+	}
+	.swiper-wrapper{
+		width:100%;
+        height:100%;
+	}
+    .swiper-slide{
+            width:100%;
+            height:100%;
+            overflow:auto;
+            overflow-x:hidden;
+        }
+	ul .indexlrc{
+		color:maroon;
+		font-weight:bold;
+		font-size:16px;
+	}
+	</style>
+</head>
+<body>
+	<header></header>
+	<section></section>
+	<div id="Audio">
+		<section id="swiper" class="swiper-container">
+			<section class="swiper-wrapper">
+				<div  class="swiper-slide">
+                    <ol id="musicList">
+						<li src="music/sunsine" class="index">金贵晟 - 虹之间</li>
+						<li src="music/vage" >花澤香菜 (はなざわ かな) - 恋愛サーキュレーション (恋爱循环) (《化物语》TV动画片头曲)</li>
+                    	<li src="music/how">薛之谦 - 你还要我怎样 (Live)</li>
+						<li src="music/Eagles - Hotel California (Live)">Eagles - Hotel California (Live)</li>
+						<li src="music/not-you">曹轩宾 - 可惜不是你</li>
+						<li src="music/dust">徐佳莹 - 失落沙洲</li>
+						<li src="music/home">许巍 - 故乡</li>
+						<li src="music/artor">薛之谦 - 演员</li>
+						<li src="music/enough">五月天 - 知足</li>
+						<li src="music/jaycantopen">周杰伦 - 开不了口</li>
+						<li src="music/rainnight">周杰伦 - 雨下一整晚</li>
+						<li src="music/alone">孤独-宾阳乐队</li>
+						<li src="music/xi">林宥嘉 - 心有林夕</li>
+						<li src="music/sheisfar">陈奕迅 - 遥远的她</li>
+                    </ol>
+				</div>
+				<div id="lrcWrap" class="swiper-slide">
+					<ul id="lrc">
+					</ul>
+				</div>				
+			</section>
+			<div class="swiper-pagination"></div>
+    		<!-- 如果需要滚动条 -->
+    		<div class="swiper-scrollbar"></div>
+		</section>
+		<section id="controls">
+			<audio src="music/sunsine.mp3" id="audio" preload="auto"></audio>
+			<i id="prev" class="fa fa-step-backward" title="上一首"></i>
+			<i id="play" class="fa fa-play" title="播放/暂停"></i>
+			<i id="next" class="fa fa-step-forward" title="下一首"></i>
+			<i id="type" class="fa fa-refresh fa-spin" title="顺序播放/随机"></i>
+			<input type="range" id="current" min="0" step="1" value="0">
+			<output>
+				<span class="nowTime" id="time">00:00</span>/
+				<span class="endTime" id="endTime"></span>
+			</output>
+			<i id="muted" class="fa fa-bell" title="静音"></i>
+			<input type="range" id="volume" min="0" max="1" step="0.1">
+		</section>
+	</div>
+	<script src="./swiper-3.3.1.min.js"></script>
+	<script src="iscroll.js"></script>
+	<script>
+	function myAudio(){
+		this.audioDom();
+		this.controls();
+		this.List();
+		this.getAllTime();
+		this.getLrc('music/sunsine');
+	}
+	myAudio.prototype.audioDom=function(){
+		this.audio=document.getElementById('audio');
+		this.play=document.getElementById('play');
+		this.prev=document.getElementById('prev');
+		this.next=document.getElementById('next');
+		this.type=document.getElementById('type');
+		this.current=document.getElementById('current');
+		this.muted=document.getElementById('muted');
+		this.volume=document.getElementById('volume');
+		this.musicList=document.getElementById('musicList').children;
+		this.lrc=document.getElementById('lrc');
+		this.nowTime=document.getElementById('time');
+		this.endTime=document.getElementById('endTime');
+		this.playflag=false;
+		this.mutedflag=true;
+		this.typeflag=true;
+		this.cur=0;
+		this.lrcDelay=0;
+	}
+	myAudio.prototype.getAllTime=function(){
+		var _this=this;
+		setTimeout(function(){
+			if(isNaN(_this.audio.duration)){
+				_this.getAllTime();
+			}else{
+				var doubleNumFir=Math.floor(_this.audio.duration/60)>=10?Math.floor(_this.audio.duration/60):"0"+Math.floor(_this.audio.duration/60);
+				var doubleNumSec=parseInt(_this.audio.duration%60)>=10?parseInt(_this.audio.duration%60):"0"+parseInt(_this.audio.duration%60);
+				_this.endTime.innerHTML=doubleNumFir+":"+doubleNumSec;
+			}
+		},10)
+	}
+	myAudio.prototype.controls=function(){
+		var _this=this;
+		var doubleNumFir;
+		var doubleNumSec;	
+		this.play.onclick=function(){
+			if(_this.playflag){
+				_this.audio.pause();
+				_this.playflag=false;
+				this.className="fa fa-play";
+				this.style.padding="0 10px"
+			}else{
+				_this.audio.play();
+				_this.playflag=true;
+				this.className="fa fa-pause";
+				this.style.padding="0 9px";
+			}
+		}
+		this.muted.onclick=function(){
+			if(_this.mutedflag){
+				_this.audio.muted=true;
+				_this.mutedflag=false;
+				this.className="fa fa-bell-slash";
+				this.style.padding='0 4px';
+			}else{
+				_this.audio.muted=false;
+				_this.mutedflag=true;
+				this.className="fa fa-bell";
+				this.style.padding='0 5px';
+			}
+		}
+		this.volume.oninput=function(){
+			_this.audio.volume=_this.volume.value;
+		}
+		this.audio.addEventListener('timeupdate',function(){
+			_this.current.max=parseInt(this.duration);
+			_this.current.value=this.currentTime;
+			doubleNumFir=parseInt(this.currentTime/60)>=10?parseInt(this.currentTime/60):"0"+parseInt(this.currentTime/60);
+			doubleNumSec=parseInt(this.currentTime%60)>=10?parseInt(this.currentTime%60):"0"+parseInt(this.currentTime%60);
+			_this.nowTime.innerHTML=doubleNumFir+":"+doubleNumSec;
+			var time=doubleNumFir+":"+doubleNumSec;
+			doubleNumFir=parseInt(this.duration/60)>=10?parseInt(this.duration/60):"0"+parseInt(this.duration/60);
+			doubleNumSec=parseInt(this.duration%60)>=10?parseInt(this.duration%60):"0"+parseInt(this.duration%60);
+			_this.endTime.innerHTML=doubleNumFir+":"+doubleNumSec;
+			for(i=0;i<_this.lrc.children.length;i++){
+				if(_this.lrc.children[i].getAttribute('lrcTime')==time){
+					var index=i;
+					_this.lrcDelay=_this.lrcDelay<0?0:_this.lrcDelay;
+					setTimeout(function(){
+						for(j=0;j<_this.lrc.children.length;j++){
+							_this.lrc.children[j].className=""
+						}
+						_this.lrc.children[index].className="indexlrc";
+						if(index>=5&&_this.lrc.children[index].innerHTML!=""){
+							_this.lrc.style.top=_this.lrc.offsetHeight/4-_this.lrc.children[index].offsetTop+'px'
+						}						
+					},_this.lrcDelay)
+				}
+			}
+		});
+		this.current.oninput=function(){
+			_this.audio.currentTime=this.value;
+		};
+		this.audio.addEventListener('ended',function(){
+			_this.Switch('+')
+		});
+		this.next.onclick=function(){
+			_this.Switch('+')
+		};
+		this.prev.onclick=function(){
+			_this.Switch('-')
+		};
+		this.type.onclick=function(){
+			if(_this.typeflag){
+				myAudio.prototype.or=function(){
+					_this.cur=parseInt(Math.random()*(_this.musicList.length-1))
+				}
+				_this.typeflag=false;
+				this.className="fa fa-random";
+				this.style.padding="0 4px";
+			}else{
+				myAudio.prototype.or=function(type){
+					if(type=='+'){
+						if(this.cur==this.musicList.length-1){
+							this.cur=0;
+						}else{
+							this.cur++;
+						}
+					}else{
+						if(this.cur==0){
+							this.cur=this.musicList.length-1;
+						}else{
+							this.cur--;
+						}
+					}
+				}
+				_this.typeflag=true;
+				this.className="fa fa-refresh fa-spin";
+				this.style.padding="0 5px";
+			}	
+		}
+	}
+	myAudio.prototype.or=function(type){
+		if(type=='+'){
+			if(this.cur==this.musicList.length-1){
+				this.cur=0;
+			}else{
+				this.cur++;
+			}
+		}else{
+			if(this.cur==0){
+				this.cur=this.musicList.length-1;
+			}else{
+				this.cur--;
+			}
+		}
+	}
+	myAudio.prototype.Switch=function(type){
+		this.or(type)
+		this.audio.src=this.musicList[this.cur].getAttribute('src')+'.mp3';
+		this.getLrc(this.musicList[this.cur].getAttribute('src'))
+		this.audio.autoplay="autoplay";
+		for(j=0;j<this.musicList.length;j++){
+			this.musicList[j].className=""
+		}
+		this.musicList[this.cur].className="index"
+	}
+	myAudio.prototype.List=function(){
+		var _this=this
+		for(i=0;i<this.musicList.length;i++){
+			this.musicList[i].index=i;
+			this.musicList[i].onclick=function(){
+				_this.audio.src=this.getAttribute('src')+'.mp3';
+				_this.getLrc(this.getAttribute('src'))
+				_this.audio.autoplay="autoplay";
+				for(j=0;j<_this.musicList.length;j++){
+					_this.musicList[j].className=""
+				}
+				this.className="index";
+				_this.cur=this.index;
+				_this.play.className="fa fa-pause";
+				_this.playflag=true;
+				_this.play.style.padding="0 9px";
+			}
+		}	
+	}
+	myAudio.prototype.getLrc=function(url){
+		var _this=this;
+		var ajax=new XMLHttpRequest();
+		ajax.open('GET',url+'.lrc',true);
+		ajax.send(null);
+		ajax.onreadystatechange=function(res){
+			if(ajax.readyState==4&&ajax.status==200){
+				_this.putLrc(ajax.responseText)
+			}
+		}
+	}
+	myAudio.prototype.putLrc=function(text){
+		this.lrc.innerHTML="";
+		this.lrc.style.top="0";
+		this.lrcDelay=0;
+		var list=text.split('[');
+		for(i=0;i<list.length;i++){
+			if(list[i]!=''){
+				var time=list[i].split(']')[0];
+				var word=list[i].split(']')[1];
+				switch(time.split(':')[0]){
+					case 'ti':
+					case 'ar':
+					case 'al':
+					case 'by':
+					case 'off':
+						var li=document.createElement('li');
+						li.setAttribute('lrcTime','00:00');
+						li.innerHTML=time.split(':')[1];
+						this.lrc.appendChild(li);break;
+					case 'offset':this.lrcDelay=Number(time.split(':')[1]);break;
+					default:
+						var seconds=parseInt(list[i].split(']')[0].split(':')[1])>=10?parseInt(list[i].split(']')[0].split(':')[1]):'0'+parseInt(list[i].split(']')[0].split(':')[1]);
+						time=time.split(':')[0]+':'+seconds;
+						var li=document.createElement('li');
+						li.setAttribute('lrcTime',time);
+						li.innerHTML=word;
+						this.lrc.appendChild(li);
+				}
+			}
+		}
+		this.lrc.style.height=list.length*20+'px'
+	}
+	new myAudio();
+	var mySwiper = new Swiper('.swiper-container', {
+	  /*direction: 'vertical',*/
+	  /*loop: false,*/
+	  direction:'horizontal',
+	  // 如果需要分页器
+	  pagination: '.swiper-pagination',
+	  
+	  // 如果需要前进后退按钮
+	  /*nextButton: '.swiper-button-next',
+	  prevButton: '.swiper-button-prev',*/
+	  
+	  // 如果需要滚动条
+	  scrollbar: '.swiper-scrollbar'
+	}) 
+	</script>
+</body>
+</html>
